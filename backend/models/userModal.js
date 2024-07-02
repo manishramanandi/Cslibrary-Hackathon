@@ -14,5 +14,8 @@ const userShcema = new mongoose.Schema({
         require : true,
         type : String, 
     }
-})
-module.exports = mongoose.model('User',userShcema);
+},{ timestamps: true  })
+
+const User = mongoose.model('users',userShcema);
+
+export default User;
