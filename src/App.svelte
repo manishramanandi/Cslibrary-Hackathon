@@ -1,16 +1,15 @@
 <script>
-  // @ts-nocheck
-  import Transition from "svelte-class-transition";
-  import Typewriter from "svelte-typewriter";
+  import Navbar from './Component/Navbar.svelte';
 </script>
 
 <main>
-  <h1 class="bg-blue-400">Hello this is from sprin-Hacks</h1>
-
-</main>
   
+  <Navbar />  
 
-<style global lang="postcss">
+ 
+  
+</main>
+<style>
   @tailwind base;
   @tailwind components;
   @tailwind utilities;
