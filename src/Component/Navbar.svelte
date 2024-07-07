@@ -7,42 +7,45 @@
   
   <main class="bg-gray-100 min-h-screen">
     <!-- Navigation Bar -->
-    <nav class="flex items-center justify-between p-4 bg-gray-800 text-white">
-      <div class="flex items-center space-x-2 lg:space-x-10 w-full lg:w-auto">
-        <div class="text-gray-400 font-bold text-xl ml-4 lg:ml-10"> > $ cd /home/</div>
-        <!-- Blue Box with Blinking Effect -->
-        <div class="relative">
-          <div class="bg-blue-600 w-3 h-4  absolute   animate-blink"></div>
+    <nav class="w-[100%] flex items-center justify-between p-4 bg-gray-800 text-white">
+      <div class="w-[95%] flex items-center justify-evenly mx-auto">
+        <div class="font-bold text-2xl">
+          <p class="text-blue-500">CS-<span class="text-white">library</span></p>
         </div>
-        <div class="hidden lg:flex flex-wrap justify-around lg:justify-start w-full lg:w-auto lg:pl-80 space-x-4 lg:space-x-32 items-center">
-          <a href="#" class="relative text-[#808080] font-semibold hover:text-gray-300">
+        <!-- Blue Box with Blinking Effect -->
+         <!-- if you uncomment these it will make the blue box to continue blinking -->
+        <div class="relative">
+          <!-- <div class="bg-blue-600 w-3 h-4  absolute   animate-blink"></div> -->
+        </div>
+        <div class="hidden flex-wrap gap-16 items-center lg:flex">
+          <a href="#" class="relative text-[#808080] text-[20px] font-semibold hover:text-gray-300">
             About
             <span class="absolute left-0 right-0 top-full h-0.5 bg-[#808080] hover:bg-gray-300"></span>
           </a>
-          <a href="#" class="relative text-[#808080] font-semibold hover:text-gray-300">
+          <a href="#" class="relative text-[#808080] text-[20px] font-semibold hover:text-gray-300">
             Books
             <span class="absolute left-0 right-0 top-full h-0.5 bg-[#808080] hover:bg-gray-300"></span>
           </a>
-          <a href="#" class="relative text-[#808080] font-semibold hover:text-gray-300">
+          <a href="#" class="relative text-[#808080] text-[20px] font-semibold hover:text-gray-300">
             Contact
             <span class="absolute left-0 right-0 top-full h-0.5 bg-[#808080] hover:bg-gray-300"></span>
           </a>
         </div>
-      </div>
-      <div class="flex items-center space-x-4 lg:space-x-8 mt-4 lg:mt-0 mr-4 lg:mr-12">
-        <input type="text" placeholder="Search..." class="px-4 py-2 rounded bg-gray-600 focus:outline-none w-full lg:w-auto" />
-        {#if isLoggedIn}
-          <button class="px-4 py-2 bg-purple-500 rounded hover:bg-blue-600">Log out</button>
-        {:else}
-          <button class="px-6 py-2  border-2 border-inside border-blue-700 rounded hover:bg-blue-600 ">Log in</button>
-          <button class="px-6 py-2 bg-blue-700  rounded hover:bg-blue-600">Sign up</button>
-        {/if}
-        <!-- Hamburger Menu Icon -->
-        <button class="lg:hidden" on:click={() => isMenuOpen = !isMenuOpen}>
-          <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-          </svg>
-        </button>
+        <!-- <div class="flex items-center"> -->
+          <input type="text" placeholder="Search..." class="px-4 py-2 rounded bg-gray-600 focus:outline-none hidden lg:block" />
+          {#if isLoggedIn}
+            <button class="px-4 py-2 bg-purple-500 rounded hover:bg-blue-600">Log out</button>
+          {:else}
+            <button class="px-6 py-2 border-2 border-inside border-blue-700 rounded hover:bg-blue-600 hidden lg:block">Log in</button>
+            <button class="px-6 py-2 bg-blue-700  rounded hover:bg-blue-600 hidden lg:block">Sign up</button>
+          {/if}
+          <!-- Hamburger Menu Icon -->
+          <button class="lg:hidden" on:click={() => isMenuOpen = !isMenuOpen}>
+            <svg class="h-8 w-8 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        <!-- </div> -->
       </div>
     </nav>
   
