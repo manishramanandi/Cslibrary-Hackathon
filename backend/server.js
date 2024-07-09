@@ -3,6 +3,8 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import connectDB from './config/db.js'; 
 import authRoutes from './routes/authRoutes.js';
+import passport from 'passport';
+import session from 'express-session';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -17,14 +19,18 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(session({ secret: 'secret', resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 // root Route
 app.get('/', (req, res) => {
   res.status(200).json({message:'Hello World!'});
 });
 
-// Authentication / Authorization routes
-app.use(authRoutes);
+// auth routes
+app.use('/auth',authRoutes);
 
 // Protected routes
 
