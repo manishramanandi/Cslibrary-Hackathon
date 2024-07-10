@@ -1,14 +1,23 @@
+<!-- App.svelte -->
 <script>
-  import Navbar from './Component/Navbar.svelte';
+	import { Router, Link, Route } from "svelte-navigator";
+	import Home from "./Component/Home.svelte";
+  import Blog from "./Component/Blog.svelte";
+  import About from "./Component/About.svelte";
+  import Contact from "./Component/Contact.svelte";
 </script>
+<Router>
+  <nav>
+   
+  </nav>
+  <div>
+    <Route path="/" component={Home} />
+    <Route path="about" component={About} />
+    <Route path="blog" component={Blog} />
+    <Route path="contact" component={Contact} />
+  </div>
+</Router>
 
-<main>
-  
-  <Navbar />  
-
- 
-  
-</main>
 <style>
   @tailwind base;
   @tailwind components;
