@@ -1,4 +1,4 @@
-<!-- About.svelte (and other route components) -->
+
 <script>
     let isLoggedIn = false;
     // @ts-ignore
