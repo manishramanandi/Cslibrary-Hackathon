@@ -1,4 +1,6 @@
 import User from "../models/userModal.js";
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
 // RegisterController
 const RegisterController = async (req, res) => {
@@ -12,10 +14,22 @@ const RegisterController = async (req, res) => {
         }
 
         const newUser = new User({username, email, password});
+        // hash password
+        const salt = await bcrypt.genSalt(10); 
+        User.password = await bcrypt.hash(password, salt);
+        // save new user to the database 
         await newUser.save();
+
+        // create jwt token
+        const payload = { newUser: { id: user.id } };
+        const jwt_Token = jwt.sign(payload,process.env.JWT_SECRET,{expiresIn: 360000 }).catch((err) => {
+            console.log('error creating jwt token',err);
+        });
+        // sending response to the front end
         res.status(200).json({
             message: "Registration Successfull",
-            newUser
+            newUser,
+            jwt_Token
         })
         console.log("Registration endpoint called");
     } catch (err) {
@@ -43,10 +57,16 @@ const LoginController = async (req, res) => {
         if(password !== user.password ) {
             res.status(400).send("Incorrect Credentials please try again");
         }
-
-        // set jwt token for authorization
-
-        res.status(200).send("Login Successfull");
+        // create jwt token
+        const payload = { newUser: { id: user.id } };
+        const jwt_Token = jwt.sign(payload,process.env.JWT_SECRET,{expiresIn: 360000 }).catch((err) => {
+            console.log('error creating jwt token',err);
+        });
+        // sending response to the front end
+        res.status(200).json({
+            message :"Login Successfull",
+            jwt_Token
+        });
         console.log("Login endpoint called");
     } catch (err) {
         res.status(400).json({error: err.message});
