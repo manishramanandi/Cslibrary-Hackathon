@@ -1,3 +1,4 @@
+
 <script>
     let isLoggedIn = false;
     // @ts-ignore
@@ -12,21 +13,16 @@
         <div class="font-bold text-2xl">
           <p class="text-blue-500">CS-<span class="text-white">library</span></p>
         </div>
-        <!-- Blue Box with Blinking Effect -->
-         <!-- if you uncomment these it will make the blue box to continue blinking -->
-        <div class="relative">
-          <!-- <div class="bg-blue-600 w-3 h-4  absolute   animate-blink"></div> -->
-        </div>
-        <div class="hidden flex-wrap gap-16 items-center lg:flex">
-          <a href="#" class="relative text-[#808080] text-[20px] font-semibold hover:text-gray-300">
+        <div class="hidden lg:flex flex-wrap justify-around lg:justify-start w-full lg:w-auto lg:pl-80 space-x-4 lg:space-x-32 items-center">
+          <a href="about" class="relative text-[#808080] font-semibold hover:text-gray-300">
             About
             <span class="absolute left-0 right-0 top-full h-0.5 bg-[#808080] hover:bg-gray-300"></span>
           </a>
-          <a href="#" class="relative text-[#808080] text-[20px] font-semibold hover:text-gray-300">
+          <a href="blog" class="relative text-[#808080] font-semibold hover:text-gray-300">
             Books
             <span class="absolute left-0 right-0 top-full h-0.5 bg-[#808080] hover:bg-gray-300"></span>
           </a>
-          <a href="#" class="relative text-[#808080] text-[20px] font-semibold hover:text-gray-300">
+          <a href="contact" class="relative text-[#808080] font-semibold hover:text-gray-300">
             Contact
             <span class="absolute left-0 right-0 top-full h-0.5 bg-[#808080] hover:bg-gray-300"></span>
           </a>
@@ -57,7 +53,7 @@
         <a href="#" class="block hover:text-gray-300">Contact</a>
       </div>
     {/if}
-  
+  <h1>This is Blog page</h1>
     <!-- Statistics Section -->
     <section class="flex flex-col sm:flex-row justify-end items-center p-8 sm:p-16 space-y-8 sm:space-y-0 sm:space-x-8 lg:space-x-40">
       <div class="text-center p-8 bg-white rounded shadow-lg w-full sm:w-auto">
@@ -75,21 +71,22 @@
     </section>
   </main>
   
-  <style global lang="postcss">
-     @keyframes blink {
-      0%, 49% {
-        opacity: 0;
-      }
-      50%, 100% {
-        opacity: 1;
-      }
-    }
   
-    .animate-blink {
-      animation: blink 1s infinite;
-    }
-    @tailwind base;
-    @tailwind components;
-    @tailwind utilities;
+  <style global lang="postcss">
+    @keyframes blink {
+     0%, 49% {
+       opacity: 0;
+     }
+     50%, 100% {
+       opacity: 1;
+     }
+   }
+  
+   .animate-blink {
+     animation: blink 1s infinite;
+   }
+   @tailwind base;
+   @tailwind components;
+   @tailwind utilities;
   </style>
   
