@@ -20,7 +20,7 @@
           About
           <span class="absolute left-0 right-0 top-full h-0.5 bg-[#808080] hover:bg-gray-300"></span>
         </a>
-        <a href="blog" class="relative text-[#808080] font-semibold hover:text-gray-300">
+        <a href="books" class="relative text-[#808080] font-semibold hover:text-gray-300">
           Books
           <span class="absolute left-0 right-0 top-full h-0.5 bg-[#808080] hover:bg-gray-300"></span>
         </a>
@@ -35,7 +35,9 @@
       {#if isLoggedIn}
         <button class="px-4 py-2 bg-purple-500 rounded hover:bg-blue-600">Log out</button>
       {:else}
-        <button class="px-6 py-2  border-2 border-inside border-blue-700 rounded hover:bg-blue-600 ">Log in</button>
+      <a href="/login" class="px-6 py-2  border-2 border-inside border-blue-700 rounded hover:bg-blue-600">
+        Log in
+      </a>
         <a href="/signup" class="px-6 py-2 bg-blue-700 text-white rounded hover:bg-blue-600">
           Sign up
         </a>
