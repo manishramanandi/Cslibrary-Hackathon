@@ -31,12 +31,12 @@
                 </div>
             </form>
             <p class="text-center text-gray-500 text-xs mt-8">
-                Don't have an account? <a href="#" class="text-blue-500 hover:text-blue-800">Sign up</a>
+                Don't have an account? <a href="/signup" class="text-blue-500 hover:text-blue-800">Sign up</a>
             </p>
             <div class="flex justify-center mt-4 space-x-4">
-                <a href="#" class="text-blue-500 hover:text-blue-800">Join us on Telegram</a>
-                <a href="#" class="text-black hover:text-gray-800">Follow us on Twitter</a>
-                <a href="#" class="text-red-500 hover:text-red-800">Contact us via Email</a>
+                <a href="www.telegram.com" class="text-blue-500 hover:text-blue-800">Join us on Telegram</a>
+                <a href="www.twitter.com" class="text-black hover:text-gray-800">Follow us on Twitter</a>
+                <a href="www.email.com" class="text-red-500 hover:text-red-800">Contact us via Email</a>
             </div>
         </div>
         <!-- Right Side -->

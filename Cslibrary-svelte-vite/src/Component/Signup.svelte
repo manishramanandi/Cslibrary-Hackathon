@@ -61,7 +61,7 @@
           </button>
           <a
             class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-            href="#"
+            href="/login"
           >
             Already have an account? Log in
           </a>
@@ -69,13 +69,13 @@
       </form>
   
       <div class="flex justify-center mt-6 space-x-4">
-      <a href="#" class="text-blue-500 hover:text-blue-700">Join us on <img src="." alt=""></a>
-        <a href="#" class="text-blue-500 hover:text-blue-700">Join us on X</a>
-        <a href="#" class="text-blue-500 hover:text-blue-700">Contact us via Gmail</a>
+      <a href="www.telegram.com" class="text-blue-500 hover:text-blue-700">Join us on <img src="." alt=""></a>
+        <a href="www.twiteer.com" class="text-blue-500 hover:text-blue-700">Join us on X</a>
+        <a href="www.gmail.com" class="text-blue-500 hover:text-blue-700">Contact us via Gmail</a>
       </div>
     </div>
   
     <div class="absolute top-0 right-0 w-64">
-      <img src="./material/sword.jpg" alt="Anime Image" class="rounded-lg shadow-lg" />
+      <!-- <img src="images/sowrd.png" alt="Anime Image" class="rounded-lg shadow-lg" /> -->
     </div>
   </div>
