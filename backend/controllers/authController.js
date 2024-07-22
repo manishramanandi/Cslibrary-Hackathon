@@ -40,22 +40,22 @@ const RegisterController = async (req, res) => {
 
 // LoginController
 const LoginController = async (req, res) => {
-    const { email, password } = req.body; 
+    const { username, password } = req.body; 
     try {
-        if( !email || !password ) {
+        if( !username || !password ) {
             res.status(400).json({
                 message: "all field are required"
             });
             return;
         }
 
-        const user = await User.findOne({ email });
+        const user = await User.findOne({ username });
         
         if(!user) {
-            res.status(400).send("User does not exits");
+            return res.status(400).json({message: "User does not exits"});
         }
         if(password !== user.password ) {
-            res.status(400).send("Incorrect Credentials please try again");
+            return res.status(400).send("Incorrect Credentials please try again");
         }
         // create jwt token
         const payload = { newUser: { id: user.id } };
@@ -70,6 +70,7 @@ const LoginController = async (req, res) => {
         console.log("Login endpoint called");
     } catch (err) {
         res.status(400).json({error: err.message});
+        console.log('error login in user', err);
     }
 }
 

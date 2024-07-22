@@ -1,8 +1,39 @@
+
+
 <script>
+
+  import { CustomFetch } from '../Fetch.js';
+
     let username = "";
     let password = "";
+    let confirmpassword = "";
     let email = "";
    
+  const handleSubmit = async () => {
+    try{
+      if (password !== confirmpassword) {
+        console.log('password does not match');
+      }
+      const response = await CustomFetch('/auth/register',{
+        method: 'POST',
+        body: JSON.stringify({
+          username,
+          email,
+          password
+        }),
+      })
+
+      console.log('registering successfull',response);
+
+      username = '',
+      email = '',
+      password = ''
+
+    } catch (err) {
+      console.log('error registering user', err)
+    }
+  }
+
 </script>
 
 
@@ -48,6 +79,17 @@
             id="password"
             type="password"
             placeholder="Password"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
+
+        <div class="mb-6">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Password</label>
+          <input
+            bind:value={confirmpassword}
+            id="confirmpassword"
+            type="confirmpassword"
+            placeholder="Re enter Password"
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>

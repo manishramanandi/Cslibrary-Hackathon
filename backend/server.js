@@ -25,9 +25,9 @@ app.use(passport.session());
 
 
 // root Route
-app.get('/', (req, res) => {
-  res.status(200).json({message:'Hello World!'});
-});
+// app.get('/', (req, res) => {
+//   res.status(200).json({message:'Hello World!'});
+// });
 
 // auth routes
 app.use('/auth',authRoutes);
