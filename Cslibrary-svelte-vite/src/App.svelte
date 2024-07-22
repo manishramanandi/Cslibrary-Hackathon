@@ -7,12 +7,14 @@
     import Contact from "./Component/Contact.svelte";
     import Login from "./Component/Login.svelte";
     import Signup from "./Component/Signup.svelte";
+    import Footer from "./Component/Footer.svelte";
 </script>
 
 <Router>
     <nav></nav>
     <div>
         <Route path="/" component={Home} />
+        <Route path="/" component={Footer} />
         <Route path="about" component={About} />
         <Route path="books" component={Books} />
         <Route path="contact" component={Contact} />

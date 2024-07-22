@@ -1,8 +1,39 @@
+
+
 <script>
+
+  import { CustomFetch } from '../Fetch.js';
+
     let username = "";
     let password = "";
+    let confirmpassword = "";
     let email = "";
    
+  const handleSubmit = async () => {
+    try{
+      if (password !== confirmpassword) {
+        console.log('password does not match');
+      }
+      const response = await CustomFetch('/auth/register',{
+        method: 'POST',
+        body: JSON.stringify({
+          username,
+          email,
+          password
+        }),
+      })
+
+      console.log('registering successfull',response);
+
+      username = '',
+      email = '',
+      password = ''
+
+    } catch (err) {
+      console.log('error registering user', err)
+    }
+  }
+
 </script>
 
 
@@ -51,6 +82,17 @@
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
+
+        <div class="mb-6">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Password</label>
+          <input
+            bind:value={confirmpassword}
+            id="confirmpassword"
+            type="confirmpassword"
+            placeholder="Re enter Password"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
   
         <div class="flex items-center justify-between">
           <button
@@ -61,7 +103,7 @@
           </button>
           <a
             class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-            href="#"
+            href="/login"
           >
             Already have an account? Log in
           </a>
@@ -69,13 +111,13 @@
       </form>
   
       <div class="flex justify-center mt-6 space-x-4">
-      <a href="#" class="text-blue-500 hover:text-blue-700">Join us on <img src="." alt=""></a>
-        <a href="#" class="text-blue-500 hover:text-blue-700">Join us on X</a>
-        <a href="#" class="text-blue-500 hover:text-blue-700">Contact us via Gmail</a>
+      <a href="www.telegram.com" class="text-blue-500 hover:text-blue-700">Join us on <img src="." alt=""></a>
+        <a href="www.twiteer.com" class="text-blue-500 hover:text-blue-700">Join us on X</a>
+        <a href="www.gmail.com" class="text-blue-500 hover:text-blue-700">Contact us via Gmail</a>
       </div>
     </div>
   
     <div class="absolute top-0 right-0 w-64">
-      <img src="./material/sword.jpg" alt="Anime Image" class="rounded-lg shadow-lg" />
+      <!-- <img src="images/sowrd.png" alt="Anime Image" class="rounded-lg shadow-lg" /> -->
     </div>
   </div>

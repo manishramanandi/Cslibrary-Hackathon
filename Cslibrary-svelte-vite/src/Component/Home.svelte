@@ -3,6 +3,7 @@
     let isLoggedIn = false;
     // @ts-ignore
     let isMenuOpen = false;
+    import Footer from "./Footer.svelte";
 </script>
 
 <main class="bg-gray-100 min-h-screen">
@@ -69,7 +70,7 @@
                     Log in
                 </a>
                 <a
-                    href=""
+                    href="/signup"
                     class="px-6 py-2 bg-blue-700 text-white rounded hover:bg-blue-600"
                 >
                     Sign up
@@ -132,6 +133,8 @@
             <div class="text-lg text-gray-600">Saved</div>
         </div>
     </section>
+    <Footer />
+    
 </main>
 
 <style global lang="postcss">
