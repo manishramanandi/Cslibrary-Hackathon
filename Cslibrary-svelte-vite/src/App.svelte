@@ -14,12 +14,12 @@
     <nav></nav>
     <div>
         <Route path="/" component={Home} />
-        <Route path="/" component={Footer} />
-        <Route path="about" component={About} />
-        <Route path="books" component={Books} />
-        <Route path="contact" component={Contact} />
-        <Route Path="signup" component={Signup} />
-        <Route Path="login" component={Login} />
+        <!-- <Route path="/" component={Footer} /> -->
+        <Route path="/about" component={About} />
+        <Route path="/books" component={Books} />
+        <Route path="/contact" component={Contact} />
+        <Route path="/signup" component={Signup} />
+        <Route path="/login" component={Login} />
     </div>
 </Router>
 
