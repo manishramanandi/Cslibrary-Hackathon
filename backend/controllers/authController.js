@@ -21,10 +21,8 @@ const RegisterController = async (req, res) => {
         await newUser.save();
 
         // create jwt token
-        const payload = { newUser: { id: user.id } };
-        const jwt_Token = jwt.sign(payload,process.env.JWT_SECRET,{expiresIn: 360000 }).catch((err) => {
-            console.log('error creating jwt token',err);
-        });
+        const payload = { newUser: { id: User.id } };
+        const jwt_Token = jwt.sign(payload,process.env.JWT_SECRET,{expiresIn: 360000 });
         // sending response to the front end
         res.status(200).json({
             message: "Registration Successfull",
