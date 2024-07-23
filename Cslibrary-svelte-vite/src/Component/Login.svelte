@@ -1,5 +1,6 @@
 <script>
     import { CustomFetch } from '../Fetch.js';
+    import { Link } from "svelte-navigator";
 
     let username = '';
     let password = '';
@@ -38,7 +39,7 @@
     <div class="bg-white rounded-lg shadow-lg flex overflow-hidden w-3/4 max-w-4xl">
         <!-- Left Side -->
         <div class="w-1/2 p-8">
-            <img src="/images/sowrd.png" alt="CSLibrary Logo" class="mb-8 mx-auto">
+            <img src="/images/sowrd.png" alt="CSLibrary Logo" class="mb-4 w-[70%] h-32 mx-auto">
             <form on:submit|preventDefault={handleSubmit}>
                 <div class="mb-4">
                     <label for="username" class="block text-gray-700 text-sm font-bold mb-2">Username</label>
@@ -55,7 +56,7 @@
                 </div>
             </form>
             <p class="text-center text-gray-500 text-xs mt-8">
-                Don't have an account? <a href="/signup" class="text-blue-500 hover:text-blue-800">Sign up</a>
+                Don't have an account? <Link to="/signup" class="text-blue-500 hover:text-blue-800">Sign up</Link>
             </p>
             <div class="flex justify-center mt-4 space-x-4">
                 <a href="www.telegram.com" class="text-blue-500 hover:text-blue-800">Join us on Telegram</a>

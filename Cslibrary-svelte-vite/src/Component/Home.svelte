@@ -1,9 +1,11 @@
 <!-- About.svelte (and other route components) -->
 <script>
+    import { Link } from "svelte-navigator";
+    import Footer from "./Footer.svelte";
+    
     let isLoggedIn = false;
     // @ts-ignore
     let isMenuOpen = false;
-    import Footer from "./Footer.svelte";
 </script>
 
 <main class="bg-gray-100 min-h-screen">
@@ -20,33 +22,33 @@
             <div
                 class="hidden lg:flex flex-wrap justify-around lg:justify-start w-full lg:w-auto lg:pl-80 space-x-4 lg:space-x-32 items-center"
             >
-                <a
-                    href="about"
+                <Link
+                    to="about"
                     class="relative text-[#808080] font-semibold hover:text-gray-300"
                 >
                     About
                     <span
                         class="absolute left-0 right-0 top-full h-0.5 bg-[#808080] hover:bg-gray-300"
                     ></span>
-                </a>
-                <a
-                    href="books"
+                </Link>
+                <Link
+                    to="books"
                     class="relative text-[#808080] font-semibold hover:text-gray-300"
                 >
                     Books
                     <span
                         class="absolute left-0 right-0 top-full h-0.5 bg-[#808080] hover:bg-gray-300"
                     ></span>
-                </a>
-                <a
-                    href="contact"
+                </Link>
+                <Link
+                    to="contact"
                     class="relative text-[#808080] font-semibold hover:text-gray-300"
                 >
                     Contact
                     <span
                         class="absolute left-0 right-0 top-full h-0.5 bg-[#808080] hover:bg-gray-300"
                     ></span>
-                </a>
+                </Link>
             </div>
         </div>
         <div
@@ -63,18 +65,18 @@
                     >Log out</button
                 >
             {:else}
-                <a
-                    href="/login"
+                <Link
+                    to="/login"
                     class="px-6 py-2 border-2 border-inside border-blue-700 rounded hover:bg-blue-600"
                 >
                     Log in
-                </a>
-                <a
-                    href="/signup"
+                </Link>
+                <Link
+                    to="/signup"
                     class="px-6 py-2 bg-blue-700 text-white rounded hover:bg-blue-600"
                 >
                     Sign up
-                </a>
+                </Link>
             {/if}
             <!-- Hamburger Menu Icon -->
             <button
@@ -104,9 +106,9 @@
         <div
             class="lg:hidden fixed top-0 left-0 w-full bg-gray-800 text-white p-4 space-y-4"
         >
-            <a href="#" class="block hover:text-gray-300">About</a>
-            <a href="#" class="block hover:text-gray-300">Books</a>
-            <a href="#" class="block hover:text-gray-300">Contact</a>
+            <Link to="#" class="block hover:text-gray-300">About</Link>
+            <Link to="#" class="block hover:text-gray-300">Books</Link>
+            <Link to="#" class="block hover:text-gray-300">Contact</Link>
         </div>
     {/if}
 
