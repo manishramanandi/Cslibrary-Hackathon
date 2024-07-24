@@ -7,7 +7,6 @@
     import Contact from "./Component/Contact.svelte";
     import Login from "./Component/Login.svelte";
     import Signup from "./Component/Signup.svelte";
-    import Footer from "./Component/Footer.svelte";
 </script>
 
 <Router>
