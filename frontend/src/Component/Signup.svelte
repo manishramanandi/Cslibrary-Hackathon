@@ -8,6 +8,7 @@
   let confirmpassword = '';
   let StatusMessage;
 
+    
 
   // Any necessary Svelte logic can be added here
   const handleSubmit = async () => {
@@ -34,9 +35,9 @@
       StatusMessage = 'sign in successfull';
       console.log('sign in successfull',response);
 
-      email = '',
-      username = '',
-      password = ''
+      email = '';
+      username = '';
+      password = '';
 
       } catch (err) {
       console.log('error signing in user', err)
@@ -81,7 +82,7 @@
               </div>
           </form>
           <p class="text-center text-gray-500 text-xs mt-8">
-              Already have an account? <Link to="/login" class="text-blue-500 hover:text-blue-800">Login</Link>
+              Already have an account? <Link to="/" class="text-blue-500 hover:text-blue-800">Login</Link>
           </p>
           <div class="flex justify-center mt-4 space-x-4">
               <a href="www.telegram.com" class="text-blue-500 hover:text-blue-800">Join us on Telegram</a>

@@ -4,6 +4,9 @@
 
     let username = '';
     let password = '';
+    let successMessage = '';
+    let errorMessage = '';
+    
 
     // Any necessary Svelte logic can be added here
     const handleSubmit = async () => {
@@ -15,14 +18,25 @@
             password
             }),
         })
+        
+        //if (response.status === 200) {
+                const token = response.jwt_Token;
+                localStorage.setItem('access_token', token);
+                console.log('Sign in successful', response);
 
-        console.log('sign in successfull',response);
-
-        username = '',
-        password = ''
+                // Reset form fields
+                username = '';
+                password = '';
+                
+                successMessage = response.message;
+                
+                // Navigate to the "/home" route
+                window.location.href = '/home';
+        //}
 
         } catch (err) {
         console.log('error signing in user', err)
+        errorMessage = 'Incorrect Credentials please try again';
         }
     }
 </script>
@@ -39,6 +53,22 @@
     <div class="bg-white rounded-lg shadow-lg flex overflow-hidden w-3/4 max-w-4xl">
         <!-- Left Side -->
         <div class="w-1/2 p-8">
+            {#if successMessage !== '' && errorMessage !== ''}
+                <div class='text-center text-green-500 font-semibold text-1xl'>{successMessage}</div>
+                <div class='text-center text-red-500 font-semibold text-1xl'>{errorMessage}</div>
+            {/if}
+
+            {#if successMessage !== '' && errorMessage === ''}
+                <div class='text-center text-green-500 font-semibold text-1xl'>{successMessage}</div>
+                <div class='hidden'>{errorMessage}</div>
+            {/if}
+
+            {#if successMessage === '' && errorMessage !== ''}
+                <div class='hidden'>{successMessage}</div>
+                <div class='text-center text-red-500 font-semibold text-1xl'>{errorMessage}</div>
+            {/if}
+        
+
             <img src="/images/sowrd.png" alt="CSLibrary Logo" class="mb-4 w-[70%] h-32 mx-auto">
             <form on:submit|preventDefault={handleSubmit}>
                 <div class="mb-4">
