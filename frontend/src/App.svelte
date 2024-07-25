@@ -7,6 +7,7 @@
     import Contact from "./Component/Contact.svelte";
     import Login from "./Component/Login.svelte";
     import Signup from "./Component/Signup.svelte";
+    import AddBook from "./Component/AddBook.svelte";
 </script>
 
 <Router>
@@ -18,6 +19,7 @@
         <Route path="/books" component={Books} />
         <Route path="/contact" component={Contact} />
         <Route path="/home" component={Home} />
+        <Route path="/addbook" component={AddBook} />
     </div>
 </Router>
 

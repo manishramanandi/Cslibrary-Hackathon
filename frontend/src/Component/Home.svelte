@@ -1,11 +1,59 @@
 <!-- About.svelte (and other route components) -->
 <script>
     import { Link } from "svelte-navigator";
+    import Book from "./Book.svelte";
     import Footer from "./Footer.svelte";
     
-    let isLoggedIn = false;
-    // @ts-ignore
     let isMenuOpen = false;
+
+    const logOut = () => {
+        localStorage.clear('access_token');
+        window.location.href = '/';
+    }
+
+    // data sample 
+    const books = [
+        {
+            "bookName": "To Kill a Mockingbird",
+            "author": "Harper Lee",
+            "image": "https://example.com/to-kill-a-mockingbird.jpg",
+            "title": "Novel",
+            "year": 1960
+        },
+        {
+            "bookName": "1984",
+            "author": "George Orwell",
+            "image": "https://example.com/1984.jpg",
+            "title": "Novel",
+            "year": 1949
+        },
+        {
+            "bookName": "The Great Gatsby",
+            "author": "F. Scott Fitzgerald",
+            "image": "https://example.com/the-great-gatsby.jpg",
+            "title": "Novel",
+            "year": 1925
+        },
+        {
+            "bookName": "Pride and Prejudice",
+            "author": "Jane Austen",
+            "image": "https://example.com/pride-and-prejudice.jpg",
+            "title": "Novel",
+            "year": 1813
+        },
+        {
+            "bookName": "The Catcher in the Rye",
+            "author": "J.D. Salinger",
+            "image": "https://example.com/the-catcher-in-the-rye.jpg",
+            "title": "Novel",
+            "year": 1951
+        }
+    ];
+
+    //map function to update data 
+
+    
+
 </script>
 
 <main class="bg-gray-100 min-h-screen">
@@ -25,7 +73,7 @@
                 <Link
                     to="about"
                     class="relative text-[#808080] font-semibold hover:text-gray-300"
-                >
+                > 
                     About
                     <span
                         class="absolute left-0 right-0 top-full h-0.5 bg-[#808080] hover:bg-gray-300"
@@ -59,25 +107,18 @@
                 placeholder="Search..."
                 class="px-4 py-2 rounded bg-gray-600 focus:outline-none w-full lg:w-auto"
             />
-            {#if isLoggedIn}
-                <button
-                    class="px-4 py-2 bg-purple-500 rounded hover:bg-blue-600"
-                    >Log out</button
-                >
-            {:else}
                 <Link
-                    to="/login"
+                    to="/addbook"
                     class="px-6 py-2 border-2 border-inside border-blue-700 rounded hover:bg-blue-600"
                 >
-                    Log in
+                    Add Book
                 </Link>
-                <Link
-                    to="/signup"
+                <button
+                    on:click={logOut}
                     class="px-6 py-2 bg-blue-700 text-white rounded hover:bg-blue-600"
                 >
-                    Sign up
-                </Link>
-            {/if}
+                    Logout
+                </button>
             <!-- Hamburger Menu Icon -->
             <button
                 class="lg:hidden"
@@ -111,6 +152,23 @@
             <Link to="#" class="block hover:text-gray-300">Contact</Link>
         </div>
     {/if}
+
+    <!-- books section -->
+    <section class="mt-4">
+        <div class="flex flex-row flex-wrap gap-8 mx-auto w-[98%]">
+            {#each books as book, index (index)}
+                <div key={index} class="w-[46vh]">
+                    <Book
+                        bookName={book.bookName}
+                        author={book.author}
+                        image={book.image}
+                        title={book.title}
+                        year={book.year}
+                    />
+                </div>
+            {/each}>
+        </div>
+    </section>
 
     <!-- Statistics Section -->
     <section

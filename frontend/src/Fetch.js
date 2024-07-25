@@ -1,10 +1,13 @@
 
 const BaseUrl = '';
+const authToken = localStorage.getItem('access_token') || '';
 
 export const CustomFetch = async (endpoint, options = {}) => {
+    console.log('check it token is present in the header', authToken);
     // api headers
     const headers = {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
     }
 
     const config = {

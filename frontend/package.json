@@ -20,7 +20,9 @@
   "dependencies": {
     "svelte-class-transition": "^1.0.4",
     "svelte-hero-icons": "^5.1.0",
+    "svelte-kit": "^1.2.0",
     "svelte-navigator": "^3.2.2",
+    "svelte-routing": "^2.13.0",
     "svelte-typewriter": "^3.0.0-alpha.11"
   }
 }
