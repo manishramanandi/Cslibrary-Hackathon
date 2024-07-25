@@ -71,7 +71,7 @@
                 class="hidden lg:flex flex-wrap justify-around lg:justify-start w-full lg:w-auto lg:pl-80 space-x-4 lg:space-x-32 items-center"
             >
                 <Link
-                    to="about"
+                    to="/about"
                     class="relative text-[#808080] font-semibold hover:text-gray-300"
                 > 
                     About
@@ -80,7 +80,7 @@
                     ></span>
                 </Link>
                 <Link
-                    to="books"
+                    to="/books"
                     class="relative text-[#808080] font-semibold hover:text-gray-300"
                 >
                     Books
@@ -89,7 +89,7 @@
                     ></span>
                 </Link>
                 <Link
-                    to="contact"
+                    to="/contact"
                     class="relative text-[#808080] font-semibold hover:text-gray-300"
                 >
                     Contact
