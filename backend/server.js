@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import connectDB from './config/db.js'; 
 import authRoutes from './routes/authRoutes.js';
+import protectedRoutes from './routes/protectedRoutes.js';
 import passport from 'passport';
 import session from 'express-session';
 import dotenv from 'dotenv';
@@ -33,6 +34,7 @@ app.use(passport.session());
 app.use('/auth',authRoutes);
 
 // Protected routes
+app.use('/',protectedRoutes);
 
 // Start the server
 app.listen(PORT, () => {

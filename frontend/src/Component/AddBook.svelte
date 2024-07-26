@@ -3,9 +3,9 @@
     import { Link } from "svelte-navigator";
 
     let bookName = '';
-    let password = '';
     let author = '';
     let image = '';
+    let file = '';
     let title = '';
     let year = '';
     
