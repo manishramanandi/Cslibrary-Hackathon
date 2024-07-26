@@ -10,9 +10,11 @@ const booksSchema = new mongoose.Schema({
         type: String,
     },
     file: {
+        required: true,
         type: String, 
     },
     image: {
+        required: true,
         type: String,
     },
     title: {

@@ -15,4 +15,4 @@ const storage  = multer.diskStorage({
 
 const upload = multer({ storage });
 
-export default upload;
+export const uploadFiles = upload.fields([{ name: 'image', maxCount: 1 }, { name: 'file', maxCount: 1 }]);
