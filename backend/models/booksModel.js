@@ -1,16 +1,30 @@
 import mongoose from 'mongoose';
 
 const booksSchema = new mongoose.Schema({
-    name: {
-        require: true,
+    bookName: {
+        required: true, 
         type: String,
     },
     author: {
-        require: true,
+        required: true, 
         type: String,
     },
-});
+    file: {
+        type: String, 
+    },
+    image: {
+        type: String,
+    },
+    title: {
+        required: true,
+        type: String,
+    },
+    year: {
+        required: true,
+        type: String, 
+    },
+}, { timestamps: true });
 
-const books = await mongoose.model('books', booksSchema);
+const Book = mongoose.model('Book', booksSchema); 
 
-modules.exports = books;
+export default Book;
