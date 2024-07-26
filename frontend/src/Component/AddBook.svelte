@@ -4,8 +4,8 @@
 
     let bookName = '';
     let author = '';
-    let image = '';
-    let file = '';
+    let image = null; 
+    let file = null;
     let title = '';
     let year = '';
     
@@ -22,37 +22,41 @@
     // Any necessary Svelte logic can be added here
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        const formData = new FormData();
+        formData.append('bookName', bookName);
+        formData.append('author', author);
+        formData.append('image', image);
+        formData.append('file', file);
+        formData.append('title', title);
+        formData.append('year', year);
+
         try{
             const response = await CustomFetch('/book',{
             method: 'POST',
-            body: JSON.stringify({
-            bookName,
-            author,
-            image,
-            file,
-            title,
-            year
-            }),
+            body: formData
         })
         
-        //if (response.status === 200) {
-                const token = response.jwt_Token;
-                localStorage.setItem('access_token', token);
+        if (response.status === 200) {
                 console.log('Sign in successful', response);
 
                 // Reset form fields
-                username = '';
-                password = '';
+                bookName = '';
+                author = '';
+                image = null;
+                file = null;
+                title = '';
+                year = '';
                 
-                successMessage = response.message;
+                // successMessage = response.message;
                 
                 // Navigate to the "/home" route
-                window.location.href = '/home';
-        //}
+                // window.location.href = '/home';
+        }
 
         } catch (err) {
         console.log('error signing in user', err)
-        errorMessage = 'Incorrect Credentials please try again';
+        // errorMessage = 'Incorrect Credentials please try again';
         }
     }
 </script>
@@ -89,11 +93,11 @@
                 </div>
                 <div class="mb-4">
                     <label for="image" class="block text-gray-700 text-sm font-bold mb-2 capitalize">image</label>
-                    <input type="file" id="image" accept="image/*" bind:value={image} placeholder="Choose Image" class="shadow appearance-none border rounded w-[90%] mx-auto py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <input type="file" id="image" accept="image/*" on:change={handleImageChange} class="shadow appearance-none border rounded w-[90%] mx-auto py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                 </div>
                 <div class="mb-4">
                     <label for="file" class="block text-gray-700 text-sm font-bold mb-2 capitalize">file</label>
-                    <input type="file" id="file" bind:value={file} accept=".pdf,.doc,.docx" placeholder="Choose Book File" class="shadow appearance-none border rounded w-[90%] mx-auto py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <input type="file" id="file" accept=".pdf,.doc,.docx" on:change={handleFileChange} class="shadow appearance-none border rounded w-[90%] mx-auto py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                 </div>
                 <div class="flex items-center justify-between">
                     <button type="submit" class="bg-blue-500 hover:bg-blue-700 w-[30%] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
