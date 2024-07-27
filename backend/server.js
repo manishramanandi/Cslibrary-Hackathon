@@ -17,24 +17,21 @@ connectDB();
 
 // Middleware
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+
 
 app.use(session({ secret: 'secret', resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
 
-// root Route
-// app.get('/', (req, res) => {
-//   res.status(200).json({message:'Hello World!'});
-// });
+// Protected routes
+app.use('/',protectedRoutes);
+
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 // auth routes
 app.use('/auth',authRoutes);
-
-// Protected routes
-app.use('/',protectedRoutes);
 
 // Start the server
 app.listen(PORT, () => {
