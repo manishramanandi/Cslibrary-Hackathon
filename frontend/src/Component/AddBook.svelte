@@ -4,19 +4,21 @@
 
     let bookName = '';
     let author = '';
-    let image = null; 
+    let image = null;
     let file = null;
     let title = '';
     let year = '';
-    
-        // Function to handle image file input
+
+    // Function to handle image file input
     const handleImageChange = (event) => {
-        image = event.target.files[0]; 
+        image = event.target.files[0];
+        console.log('Image selected:', image);
     };
 
     // Function to handle general file input
     const handleFileChange = (event) => {
         file = event.target.files[0];
+        console.log('file selected:', file);
     };
 
     // Any necessary Svelte logic can be added here
@@ -31,14 +33,16 @@
         formData.append('title', title);
         formData.append('year', year);
 
-        try{
-            const response = await CustomFetch('/book',{
-            method: 'POST',
-            body: formData
-        })
-        
-        if (response.status === 200) {
-                console.log('Sign in successful', response);
+        console.log('checking formData', formData);
+
+        try {
+            const response = await CustomFetch('/book', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (response.status === 200) {
+                console.log('Form submission successful', response);
 
                 // Reset form fields
                 bookName = '';
@@ -47,19 +51,16 @@
                 file = null;
                 title = '';
                 year = '';
-                
-                // successMessage = response.message;
-                
+
                 // Navigate to the "/home" route
                 // window.location.href = '/home';
-        }
-
+            }
         } catch (err) {
-        console.log('error signing in user', err)
-        // errorMessage = 'Incorrect Credentials please try again';
+            console.log('Error submitting form', err);
         }
-    }
+    };
 </script>
+
 
 <style>
     .right-side-background {
@@ -75,15 +76,7 @@
         <div class="w-[85%] mx-auto my-10">
         <h4 class="block text-blue-400 text-center text-[20px] font-bold mb-2 capitalize"> Add a new book</h4>
             <form on:submit|preventDefault={handleSubmit}>
-                <div class="mb-4">
-                    <label for="bookName" class="block text-gray-700 text-sm font-bold mb-2 capitalize">bookName</label>
-                    <input type="text" id="bookName" bind:value={bookName} placeholder="Enter Book Name" class="shadow appearance-none border rounded w-[90%] mx-auto py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                </div>
-                <div class="mb-4">
-                    <label for="author" class="block text-gray-700 text-sm font-bold mb-2 capitalize">author</label>
-                    <input type="text" id="author" bind:value={author} placeholder="Enter Author Name" class="shadow appearance-none border rounded w-[90%] mx-auto py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                </div>
-                <div class="mb-4">
+               <div class="mb-4">
                     <label for="title" class="block text-gray-700 text-sm font-bold mb-2 capitalize">title</label>
                     <input type="text" id="title" bind:value={title} placeholder="Enter Title Name" class="shadow appearance-none border rounded w-[90%] mx-auto py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                 </div>
@@ -92,18 +85,24 @@
                     <input type="text" id="year" bind:value={year} placeholder="Enter year of Publish" class="shadow appearance-none border rounded w-[90%] mx-auto py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                 </div>
                 <div class="mb-4">
-                    <label for="image" class="block text-gray-700 text-sm font-bold mb-2 capitalize">image</label>
-                    <input type="file" id="image" accept="image/*" on:change={handleImageChange} class="shadow appearance-none border rounded w-[90%] mx-auto py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <label for="bookName" class="block text-gray-700 text-sm font-bold mb-2 capitalize">Book Name</label>
+                    <input type="text" id="bookName" bind:value={bookName} placeholder="Enter Book Name" class="shadow appearance-none border rounded w-[90%] mx-auto py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                 </div>
                 <div class="mb-4">
-                    <label for="file" class="block text-gray-700 text-sm font-bold mb-2 capitalize">file</label>
-                    <input type="file" id="file" accept=".pdf,.doc,.docx" on:change={handleFileChange} class="shadow appearance-none border rounded w-[90%] mx-auto py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <label for="author" class="block text-gray-700 text-sm font-bold mb-2 capitalize">Author</label>
+                    <input type="text" id="author" bind:value={author} placeholder="Enter Author Name" class="shadow appearance-none border rounded w-[90%] mx-auto py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                 </div>
-                <div class="flex items-center justify-between">
-                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 w-[30%] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                        Submit
-                    </button>
+                <div class="mb-4">
+                    <label for="image" class="block text-gray-700 text-sm font-bold mb-2 capitalize">Image</label>
+                    <input type="file" id="image" on:change={handleImageChange} class="shadow appearance-none border rounded w-[90%] mx-auto py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                 </div>
+                <div class="mb-4">
+                    <label for="file" class="block text-gray-700 text-sm font-bold mb-2 capitalize">File</label>
+                    <input type="file" id="file" on:change={handleFileChange} class="shadow appearance-none border rounded w-[90%] mx-auto py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    Submit
+                </button>
             </form>
         </div>
     </div>
