@@ -3,57 +3,54 @@
     import { Link } from "svelte-navigator";
     import Book from "./Book.svelte";
     import Footer from "./Footer.svelte";
-    
+
     let isMenuOpen = false;
 
     const logOut = () => {
-        localStorage.clear('access_token');
-        window.location.href = '/';
-    }
+        localStorage.clear("access_token");
+        window.location.href = "/";
+    };
 
-    // data sample 
+    // data sample
     const books = [
         {
-            "bookName": "To Kill a Mockingbird",
-            "author": "Harper Lee",
-            "image": "https://example.com/to-kill-a-mockingbird.jpg",
-            "title": "Novel",
-            "year": 1960
+            bookName: "To Kill a Mockingbird",
+            author: "Harper Lee",
+            image: "https://example.com/to-kill-a-mockingbird.jpg",
+            title: "Novel",
+            year: 1960,
         },
         {
-            "bookName": "1984",
-            "author": "George Orwell",
-            "image": "https://example.com/1984.jpg",
-            "title": "Novel",
-            "year": 1949
+            bookName: "1984",
+            author: "George Orwell",
+            image: "https://example.com/1984.jpg",
+            title: "Novel",
+            year: 1949,
         },
         {
-            "bookName": "The Great Gatsby",
-            "author": "F. Scott Fitzgerald",
-            "image": "https://example.com/the-great-gatsby.jpg",
-            "title": "Novel",
-            "year": 1925
+            bookName: "The Great Gatsby",
+            author: "F. Scott Fitzgerald",
+            image: "https://example.com/the-great-gatsby.jpg",
+            title: "Novel",
+            year: 1925,
         },
         {
-            "bookName": "Pride and Prejudice",
-            "author": "Jane Austen",
-            "image": "https://example.com/pride-and-prejudice.jpg",
-            "title": "Novel",
-            "year": 1813
+            bookName: "Pride and Prejudice",
+            author: "Jane Austen",
+            image: "https://example.com/pride-and-prejudice.jpg",
+            title: "Novel",
+            year: 1813,
         },
         {
-            "bookName": "The Catcher in the Rye",
-            "author": "J.D. Salinger",
-            "image": "https://example.com/the-catcher-in-the-rye.jpg",
-            "title": "Novel",
-            "year": 1951
-        }
+            bookName: "The Catcher in the Rye",
+            author: "J.D. Salinger",
+            image: "https://example.com/the-catcher-in-the-rye.jpg",
+            title: "Novel",
+            year: 1951,
+        },
     ];
 
-    //map function to update data 
-
-    
-
+    //map function to update data
 </script>
 
 <main class="bg-gray-100 min-h-screen">
@@ -73,7 +70,7 @@
                 <Link
                     to="/about"
                     class="relative text-[#808080] font-semibold hover:text-gray-300"
-                > 
+                >
                     About
                     <span
                         class="absolute left-0 right-0 top-full h-0.5 bg-[#808080] hover:bg-gray-300"
@@ -107,18 +104,18 @@
                 placeholder="Search..."
                 class="px-4 py-2 rounded bg-gray-600 focus:outline-none w-full lg:w-auto"
             />
-                <Link
-                    to="/addbook"
-                    class="px-6 py-2 border-2 border-inside border-blue-700 rounded hover:bg-blue-600"
-                >
-                    Add Book
-                </Link>
-                <button
-                    on:click={logOut}
-                    class="px-6 py-2 bg-blue-700 text-white rounded hover:bg-blue-600"
-                >
-                    Logout
-                </button>
+            <Link
+                to="/addbook"
+                class="px-6 py-2 border-2 border-inside border-blue-700 rounded hover:bg-blue-600"
+            >
+                Add Book
+            </Link>
+            <button
+                on:click={logOut}
+                class="px-6 py-2 bg-blue-700 text-white rounded hover:bg-blue-600"
+            >
+                Logout
+            </button>
             <!-- Hamburger Menu Icon -->
             <button
                 class="lg:hidden"
@@ -153,23 +150,6 @@
         </div>
     {/if}
 
-    <!-- books section -->
-    <section class="mt-4">
-        <div class="flex flex-row flex-wrap gap-8 mx-auto w-[98%]">
-            {#each books as book, index (index)}
-                <div key={index} class="w-[46vh]">
-                    <Book
-                        bookName={book.bookName}
-                        author={book.author}
-                        image={book.image}
-                        title={book.title}
-                        year={book.year}
-                    />
-                </div>
-            {/each}>
-        </div>
-    </section>
-
     <!-- Statistics Section -->
     <section
         class="flex flex-col sm:flex-row justify-end items-center p-8 sm:p-16 space-y-8 sm:space-y-0 sm:space-x-8 lg:space-x-40"
@@ -193,8 +173,56 @@
             <div class="text-lg text-gray-600">Saved</div>
         </div>
     </section>
+
+    <script>
+        import Book from "./Book.svelte"; // Ensure the correct path to your Book component
+        export let books;
+    </script>
+
+    <!-- Main section with flex container -->
+    <section class="flex flex-row w-[90%] mx-auto gap-4">
+        <!-- News section -->
+        <div class="w-[30%]">
+            <h2 class="text-2xl font-bold mb-4">Latest CS News</h2>
+            <div class="border border-gray-300 p-4 rounded-lg">
+                <!-- Add your news items here -->
+                <p>News item 1</p>
+                <p>News item 2</p>
+                <p>News item 3</p>
+            </div>
+        </div>
+
+        <!-- Books section -->
+        <div class="flex flex-row flex-wrap w-[70%]">
+            {#each books as book, index (index)}
+                <div key={index} class="w-[30%] p-2 animate-fadeIn">
+                    <Book
+                        bookName={book.bookName}
+                        author={book.author}
+                        image={book.image}
+                        title={book.title}
+                        year={book.year}
+                    />
+                </div>
+            {/each}
+        </div>
+    </section>
+
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .animate-fadeIn {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+    </style>
     <Footer />
-    
 </main>
 
 <style global lang="postcss">
