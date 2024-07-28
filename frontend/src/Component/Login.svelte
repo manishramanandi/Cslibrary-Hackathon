@@ -9,15 +9,15 @@
     
 
     // Any necessary Svelte logic can be added here
-    const handleSubmit = async () => {
+    const handleSubmit = async (event) => {
+        const data = {username,  password }
+        event.preventDefault();
+
         try{
             const response = await CustomFetch('/auth/login',{
-            method: 'POST',
-            body: JSON.stringify({
-            username,
-            password
-            }),
-        })
+                method: 'POST',
+                body: data,
+            })
         
         //if (response.status === 200) {
                 const token = response.jwt_Token;

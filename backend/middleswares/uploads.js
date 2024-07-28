@@ -13,6 +13,6 @@ const storage  = multer.diskStorage({
     }
 });
 
-const upload = multer({ storage });
+const upload = multer({ storage, limits: { fileSize: 100 * 1024 * 1024 } });
 
 export const uploadFiles = upload.fields([{ name: 'image', maxCount: 1 }, { name: 'file', maxCount: 1 }]);
