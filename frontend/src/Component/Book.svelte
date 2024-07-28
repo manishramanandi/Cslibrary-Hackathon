@@ -1,25 +1,21 @@
 <script>
-//props
-export let bookName;
-export let author;
-export let image;
-export let title;
-export let year;
-
+    export let bookName;
+    export let author;
+    export let image;
+    export let title;
+    export let year;
 </script>
 
-<style></style>
-
-<div>
-    <div class="border border-black rounded-xl py-1 px-1">
-        <div class="p-1 h-[35vh] w-[100%] border border-black rounded-xl">
-            <img src={image} alt={bookName} />
-        </div>
-        <p class="px-4 text-[23px] font-bold text-blue-600 capitalize">{bookName}</p>
-        <p class="px-4 text-[19px] font-semibold text-blue-700 capitalize">{author}</p>
-        <div class="pl-4 flex flex-row gap-10 font-semibold capitalize">
-            <span>{title}</span>
-            <span>{year}</span>
-        </div>
+<div
+    class="border border-gray-300 rounded-lg p-4 hover:transform hover:scale-105 transition-transform duration-300"
+>
+    <div class="h-[200px] overflow-hidden rounded-lg mb-4">
+        <img src={image} alt={bookName} class="h-full w-full object-cover" />
+    </div>
+    <p class="text-lg font-bold text-black capitalize">{bookName}</p>
+    <p class="text-md font-semibold text-blue-700 capitalize">{author}</p>
+    <div class="flex justify-between text-sm font-semibold capitalize">
+        <span>{title}</span>
+        <span>{year}</span>
     </div>
 </div>
